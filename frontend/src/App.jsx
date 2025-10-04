@@ -25,7 +25,8 @@ function App() {
   const handleTaskCompleted = async (id) => {
     try {
       await axios.put(`${API_URL}/tasks/${id}/complete`);
-      setTasks((prevTasks) => prevTasks.filter((task) => task.id !== id));
+      // This line forces the browser to do a full page reload
+      window.location.reload();
     } catch (error) {
       console.error('Error completing task:', error);
     }
